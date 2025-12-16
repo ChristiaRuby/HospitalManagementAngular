@@ -1,0 +1,59 @@
+<div class="app-container" *ngIf="isAuthenticated">
+  <!-- Top Navigation Bar -->
+  <mat-toolbar class="top-navigation" color="primary">
+    <div class="nav-left">
+      <div class="user-info">
+        <span class="designation">{{ currentUser?.designation || 'Welcome' }}</span>
+        <span class="datetime">{{ currentDateTime | date:'fullDate' }}</span>
+      </div>
+    </div>
+    
+    <div class="nav-right">
+      <button mat-icon-button 
+              class="nav-action" 
+              (click)="onLogoff()"
+              matTooltip="Log Off">
+        <mat-icon>logout</mat-icon>
+        <span>Log Off</span>
+      </button>
+      
+      <button mat-icon-button 
+              class="nav-action" 
+              (click)="onExit()"
+              matTooltip="Exit">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Exit</span>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="main-content">
+    <!-- Side Navigation Panel -->
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav #sidenav 
+                   mode="side" 
+                   opened="true" 
+                   class="side-navigation">
+        <app-navigation-panel></app-navigation-panel>
+      </mat-sidenav>
+
+      <!-- Main Content Area -->
+      <mat-sidenav-content class="content-area">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
+  <!-- Bottom Status Bar -->
+  <mat-toolbar class="bottom-status-bar" color="accent">
+    <span class="status-text">Durdans Hospital Management System</span>
+    <span class="spacer"></span>
+    <span class="caps-indicator">CAPS</span>
+    <span class="num-indicator">NUM</span>
+    <span class="user-id">{{ currentUser?.userId }}</span>
+    <span class="user-role">{{ currentUser?.role }}</span>
+  </mat-toolbar>
+</div>
+
+<!-- Login Component (when not authenticated) -->
+<app-login *ngIf="!isAuthenticated"></app-login>

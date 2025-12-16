@@ -1,0 +1,241 @@
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background: linear-gradient(135deg, #4a90e2, #2c5aa0);
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    border-radius: 50% 0 0 50%;
+    transform: translateX(20%);
+  }
+}
+
+.left-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.hospital-logo {
+  text-align: center;
+  color: white;
+}
+
+.logo-icon {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.hospital-name, .system-name, .company-name {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  margin: 0;
+}
+
+.hospital-name {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.divider {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ff4444, transparent);
+  margin: 1rem 0;
+  border-radius: 2px;
+}
+
+.system-name {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.img.logo-image{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.user-icon {
+  font-size: 1.5rem;
+}
+
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  color: #333;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    background: white;
+    transform: translateY(-1px);
+  }
+}
+
+.password-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.password-input {
+  flex: 1;
+}
+
+.login-arrow {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.3rem;
+  padding: 0.9rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+  
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.login-attempts, .login-instruction {
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.login-attempts {
+  color: #ffeb3b;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.login-instruction {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  margin: 1.5rem 0 0;
+  font-style: italic;
+}
+
+.turn-off-btn {
+  background: linear-gradient(45deg, #f44336, #d32f2f);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.power-icon {
+  font-size: 1.3rem;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    &::before { display: none; }
+  }
+  .left-panel { flex: 0.4; padding: 1rem; }
+  .hospital-name { font-size: 1.8rem; }
+  .system-name { font-size: 1.3rem; }
+  .right-panel { flex: 0.6; padding: 1rem; }
+  .login-card { padding: 2rem; max-width: 100%; }
+}

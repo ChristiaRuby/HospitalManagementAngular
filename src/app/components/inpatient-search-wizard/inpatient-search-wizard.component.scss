@@ -1,0 +1,261 @@
+.wizard-container {
+  width: 850px;
+  max-width: 95vw;
+  max-height: 85vh;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.wizard-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: white;
+  
+  .wizard-icon {
+    margin-right: 8px;
+    font-size: 20px;
+  }
+  
+  h2 {
+    margin: 0;
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .close-btn {
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.search-criteria {
+  background: #f8fafc;
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  
+  .criteria-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    label {
+      font-weight: 500;
+      color: #374151;
+      font-size: 13px;
+      min-width: 60px;
+    }
+    
+    mat-form-field {
+      &:first-of-type {
+        width: 140px;
+      }
+      
+      &:last-of-type {
+        width: 200px;
+      }
+    }
+  }
+}
+
+.table-container {
+  background: white;
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 2px;
+    
+    &:hover {
+      background: #94a3b8;
+    }
+  }
+  
+  h3 {
+    color: #1f2937;
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  overflow-y: visible;
+  
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+  }
+}
+
+.inpatients-table {
+  min-width: 1200px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  
+  .mat-mdc-header-row {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: #f3f4f6;
+  }
+  
+  .mat-mdc-header-cell {
+    background: #f3f4f6;
+    color: #374151;
+    font-weight: 600;
+    padding: 8px 6px;
+    font-size: 12px;
+    text-align: center;
+    border-right: 1px solid #d1d5db;
+    position: sticky;
+    top: 0;
+    
+    &:last-child {
+      border-right: none;
+    }
+  }
+  
+  .mat-mdc-cell {
+    padding: 8px 6px;
+    border-right: 1px solid #f3f4f6;
+    vertical-align: middle;
+    height: 40px;
+    
+    &:last-child {
+      border-right: none;
+    }
+  }
+  
+  .mat-mdc-row {
+    &:hover {
+      background-color: #f9fafb;
+    }
+    
+    &:nth-child(even) {
+      background-color: #fafafa;
+    }
+  }
+}
+
+.table-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  
+  ::ng-deep {
+    .mat-mdc-form-field-wrapper {
+      padding-bottom: 0;
+      margin: 0;
+    }
+    
+    .mat-mdc-text-field-wrapper {
+      height: 28px;
+      border-radius: 4px;
+    }
+    
+    .mat-mdc-form-field-infix {
+      min-height: 20px;
+      padding: 2px 0;
+    }
+    
+    .mat-mdc-input-element {
+      font-size: 13px;
+      padding: 4px 8px;
+    }
+    
+    .mat-mdc-select-value {
+      font-size: 13px;
+    }
+    
+    .mdc-notched-outline {
+      border-color: #d1d5db;
+      border-width: 1px;
+    }
+    
+    &.mat-focused .mdc-notched-outline {
+      border-color: #2563eb;
+      border-width: 1px;
+    }
+    
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-width: 1px;
+    }
+  }
+}
+
+.edited-row {
+  background-color: #fef3cd !important;
+  border-left: 2px solid #f59e0b;
+  
+  &:hover {
+    background-color: #fde68a !important;
+  }
+}
+
+.wizard-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid #e2e8f0;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  
+  button {
+    min-width: 80px;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    
+    &[color="primary"] {
+      background: #2563eb;
+      
+      &:hover {
+        background: #1d4ed8;
+      }
+    }
+    
+    mat-icon {
+      font-size: 16px;
+      margin-right: 4px;
+    }
+  }
+}

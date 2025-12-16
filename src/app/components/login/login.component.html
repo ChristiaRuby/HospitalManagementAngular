@@ -1,0 +1,66 @@
+<div class="login-container">
+  <div class="left-panel">
+    <div class="hospital-logo">
+      <div class="logo-icon">
+        <img src="assets/logo.png" alt="Hospital Logo">
+      </div>
+      <div class="hospital-info">
+        <h1 class="hospital-name">Durdans Hospital (Pvt) Ltd.</h1>
+        <div class="divider"></div>
+        <h2 class="system-name">Hospital Management System</h2>
+        <p class="company-name">Ceylon Hospitals Limited</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="right-panel">
+    <div class="login-card">
+      <div class="login-header">
+        <h3 class="login-title">User Login</h3>
+      </div>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label class="form-label">User Name:</label>
+          <input
+            type="text"
+            id="username"
+            formControlName="username"
+            class="form-input"
+            autocomplete="username"
+            (keydown)="onUsernameKeydown($event)"
+            (paste)="onPaste($event)"
+            (copy)="onCopy($event)">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Password:</label>
+          <div class="password-container">
+            <input
+              [type]="hidePassword ? 'password' : 'text'"
+              id="password"
+              formControlName="password"
+              class="form-input password-input"
+              autocomplete="current-password"
+              (keydown)="onPasswordKeydown($event)"
+              (paste)="onPaste($event)"
+              (copy)="onCopy($event)">
+            <button
+              type="button"
+              class="login-arrow"
+              [disabled]="isLoginDisabled"
+              (click)="onSubmit()">
+              ➤
+            </button>
+          </div>
+        </div>
+        
+        <div *ngIf="loginAttempts > 0" class="login-attempts">
+          Login attempts: {{ loginAttempts }}/{{ maxAttempts }}
+        </div>
+      </form>
+      
+      <p class="login-instruction">*Click the Arrow button to Login to your Account.</p>
+    </div>
+  </div>
+</div>

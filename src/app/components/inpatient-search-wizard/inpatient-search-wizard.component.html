@@ -1,0 +1,163 @@
+<div class="wizard-container">
+  <div class="wizard-header">
+    <mat-icon class="wizard-icon">search</mat-icon>
+    <h2>Inpatients Search Wizard</h2>
+    <button mat-icon-button (click)="close()" class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="search-criteria">
+    <div class="criteria-row">
+      <label>Criteria :</label>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="searchType" (selectionChange)="onCriteriaChange()">
+          <mat-option value="patientId">Patient ID</mat-option>
+          <mat-option value="firstName">First Name</mat-option>
+          <mat-option value="surname">Surname</mat-option>
+          <mat-option value="nicNumber">NIC Number</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <label>Search For :</label>
+      <mat-form-field appearance="outline">
+        <input matInput [(ngModel)]="searchValue" (input)="onSearchChange()" placeholder="Enter search term">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <h3>Inpatients Information Table</h3>
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSource" class="inpatients-table">
+      <ng-container matColumnDef="patientId">
+        <th mat-header-cell *matHeaderCellDef>Patient ID</th>
+        <td mat-cell *matCellDef="let patient">{{ patient.patientId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <input matInput [(ngModel)]="patient.firstName" (blur)="markAsEdited(patient)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="surname">
+        <th mat-header-cell *matHeaderCellDef>Surname</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <input matInput [(ngModel)]="patient.surname" (blur)="markAsEdited(patient)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef>Gender</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <mat-select [(value)]="patient.gender" (selectionChange)="markAsEdited(patient)">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateOfBirth">
+        <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <input matInput type="date" [(ngModel)]="patient.dateOfBirth" (blur)="markAsEdited(patient)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nicNumber">
+        <th mat-header-cell *matHeaderCellDef>NIC Number</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <input matInput [(ngModel)]="patient.nicNumber" (blur)="markAsEdited(patient)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <input matInput [(ngModel)]="patient.address" (blur)="markAsEdited(patient)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneHome">
+        <th mat-header-cell *matHeaderCellDef>Home Phone</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <input matInput [(ngModel)]="patient.phoneHome" (blur)="markAsEdited(patient)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneMobile">
+        <th mat-header-cell *matHeaderCellDef>Mobile Phone</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <input matInput [(ngModel)]="patient.phoneMobile" (blur)="markAsEdited(patient)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="occupation">
+        <th mat-header-cell *matHeaderCellDef>Occupation</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <input matInput [(ngModel)]="patient.occupation" (blur)="markAsEdited(patient)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="civilStatus">
+        <th mat-header-cell *matHeaderCellDef>Civil Status</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <mat-select [(value)]="patient.civilStatus" (selectionChange)="markAsEdited(patient)">
+              <mat-option value="Unmarried">Unmarried</mat-option>
+              <mat-option value="Married">Married</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="accountType">
+        <th mat-header-cell *matHeaderCellDef>Account Type</th>
+        <td mat-cell *matCellDef="let patient">
+          <mat-form-field appearance="outline" class="table-input">
+            <mat-select [(value)]="patient.accountType" (selectionChange)="markAsEdited(patient)">
+              <mat-option value="Individual">Individual</mat-option>
+              <mat-option value="Corporate">Corporate</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.edited-row]="isEdited(row)"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="wizard-actions">
+    <button mat-raised-button color="primary" (click)="apply()" [disabled]="isLoading">
+      <mat-icon *ngIf="!isLoading">save</mat-icon>
+      <mat-icon *ngIf="isLoading" class="loading-icon">hourglass_empty</mat-icon>
+      {{ isLoading ? 'Saving...' : 'Apply' }}
+    </button>
+    <button mat-raised-button (click)="close()" [disabled]="isLoading">
+      <mat-icon>close</mat-icon>
+      Close
+    </button>
+  </div>
+</div>

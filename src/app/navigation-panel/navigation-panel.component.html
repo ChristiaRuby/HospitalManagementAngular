@@ -1,0 +1,48 @@
+<div class="navigation-panel">
+  <!-- Record Explorer Section -->
+  <mat-card class="nav-section record-explorer">
+    <mat-card-header>
+      <mat-card-title>Record Explorer</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="nav-items">
+        <div *ngFor="let item of navigationItems.slice(0, 7)" 
+             class="nav-item"
+             [class.hovered]="hoveredItem === item.id"
+             [class.disabled]="!item.enabled"
+             (click)="onItemClick(item)"
+             (mouseenter)="onItemHover(item.id)"
+             (mouseleave)="onItemLeave()">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span class="nav-label">{{ item.label }}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- User Account Section -->
+  <mat-card class="nav-section user-account">
+    <mat-card-header>
+      <mat-card-title>User Account Panel</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="nav-items">
+        <div *ngFor="let item of navigationItems.slice(7)" 
+             class="nav-item"
+             [class.hovered]="hoveredItem === item.id"
+             [class.disabled]="!item.enabled"
+             (click)="onItemClick(item)"
+             (mouseenter)="onItemHover(item.id)"
+             (mouseleave)="onItemLeave()">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span class="nav-label">{{ item.label }}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Footer -->
+  <div class="nav-footer">
+    <span class="powered-by">Powered By: UDS Labs Inc.</span>
+  </div>
+</div>

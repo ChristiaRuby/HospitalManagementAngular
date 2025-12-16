@@ -1,0 +1,164 @@
+<div class="inpatient-maintenance-container">
+  <!-- Header -->
+  <div class="module-header">
+    <div class="header-content">
+      <div class="header-icon">
+        <img src="assets/logo.png" alt="Hospital Logo" class="logo-img">
+      </div>
+      <div class="header-text">
+        <h1>In-patients Maintenance Module</h1>
+        <p>* Maintain In-patients Records in the Database</p>
+      </div>
+    </div>
+    <div class="search-navigation">
+      <button class="search-btn" (click)="onLaunchSearch()">Launch Inpatient Search Wizard</button>
+    </div>
+  </div>
+
+  <!-- Note -->
+  <div class="note">***Please Note That All Non-Compulsory Fields Have Been Marked With An Asterisk</div>
+
+  <!-- Main Form -->
+  <div class="form-container">
+    <fieldset class="personal-details">
+      <legend>Personal Details</legend>
+      
+      <form [formGroup]="inpatientForm" class="inpatient-form">
+        <div class="form-grid">
+          <!-- Left Column -->
+          <div class="form-column">
+            <div class="form-field">
+              <label>Patient ID</label>
+              <input type="text" formControlName="patientId" readonly class="readonly-field">
+            </div>
+            
+            <div class="form-field">
+              <label>First Name</label>
+              <input type="text" formControlName="firstName">
+            </div>
+            
+            <div class="form-field">
+              <label>Surname</label>
+              <input type="text" formControlName="surname">
+            </div>
+            
+            <div class="form-field">
+              <label>Gender</label>
+              <select formControlName="gender">
+                <option value="">----------SELECT-----------</option>
+                <option *ngFor="let gender of genderOptions" [value]="gender">{{ gender }}</option>
+              </select>
+            </div>
+            
+            <div class="form-field">
+              <label>Date Of Birth</label>
+              <input type="date" formControlName="dateOfBirth">
+            </div>
+            
+            <div class="form-field">
+              <label>* NIC Number (9 digits + V/X)</label>
+              <input type="text" formControlName="nicNumber">
+            </div>
+            
+            <div class="form-field">
+              <label>Address</label>
+              <textarea formControlName="address" rows="4"></textarea>
+            </div>
+          </div>
+          
+          <!-- Right Column -->
+          <div class="form-column">
+            <div class="form-field">
+              <label>Phone No. (Home)</label>
+              <input type="text" formControlName="phoneHome">
+            </div>
+            
+            <div class="form-field">
+              <label>* Phone No. (Mob)</label>
+              <input type="text" formControlName="phoneMob">
+            </div>
+            
+            <div class="form-field">
+              <label>Patient Occupation</label>
+              <input type="text" formControlName="patientOccupation">
+            </div>
+            
+            <div class="form-field">
+              <label>Civil Status</label>
+              <select formControlName="civilStatus">
+                <option value="">----------SELECT-----------</option>
+                <option *ngFor="let status of civilStatusOptions" [value]="status">{{ status }}</option>
+              </select>
+            </div>
+            
+            <div class="form-field">
+              <label>Account Type</label>
+              <select formControlName="accountType">
+                <option value="">----------SELECT-----------</option>
+                <option *ngFor="let type of accountTypeOptions" [value]="type">{{ type }}</option>
+              </select>
+            </div>
+            
+            <div class="form-field" *ngIf="showCompanyFields">
+              <label>Company ID</label>
+              <div class="input-with-button">
+                <input type="text" formControlName="companyId" readonly>
+                <button type="button" class="search-company-btn" (click)="onCompanySearch()">...</button>
+              </div>
+            </div>
+            
+            <div class="form-field" *ngIf="showCompanyFields">
+              <label>Company Name</label>
+              <input type="text" formControlName="companyName" readonly>
+            </div>
+          </div>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <!-- Navigation Buttons -->
+    <div class="navigation-section">
+      <button class="nav-btn" (click)="onFirst()" [disabled]="!canNavigate || isFirstRecord">
+        <div class="btn-label">First</div>
+      </button>
+      
+      <button class="nav-btn" (click)="onPrevious()" [disabled]="!canNavigate || isFirstRecord">
+        <div class="btn-label">Previous</div>
+      </button>
+      
+      <button class="nav-btn" (click)="onNext()" [disabled]="!canNavigate || isLastRecord">
+        <div class="btn-label">Next</div>
+      </button>
+      
+      <button class="nav-btn" (click)="onLast()" [disabled]="!canNavigate || isLastRecord">
+        <div class="btn-label">Last</div>
+      </button>
+    </div>
+
+    <!-- CRUD Buttons -->
+    <div class="crud-section">
+      <button class="crud-btn add-btn" (click)="onAddNew()" [disabled]="!canAddNew || isLoading">
+        <div class="btn-label">Add New</div>
+      </button>
+      
+      <button class="crud-btn save-btn" (click)="onSave()" [disabled]="!canSave || isLoading">
+        <div class="btn-label">Save</div>
+      </button>
+      
+      <button class="crud-btn update-btn" (click)="onUpdate()" [disabled]="!canUpdate || isLoading">
+        <div class="btn-label">Update</div>
+      </button>
+      
+      <button class="crud-btn delete-btn" (click)="onDelete()" [disabled]="!canDelete || isLoading">
+        <div class="btn-label">Delete</div>
+      </button>
+      
+      <button class="crud-btn close-btn" (click)="onClose()">
+        <div class="btn-label">Close</div>
+      </button>
+    </div>
+  </div>
+</div>

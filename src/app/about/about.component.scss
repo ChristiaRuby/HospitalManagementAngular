@@ -1,0 +1,143 @@
+.about-window {
+  width: 100vw;
+  height: 100vh;
+  background: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-bar {
+  background: linear-gradient(135deg, #4a6cf7 0%, #667eea 100%);
+  color: white;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.title-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logo-icon {
+  font-size: 16px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.control-btn {
+  width: 24px;
+  height: 20px;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-section {
+  background: linear-gradient(135deg, #4a6cf7 0%, #667eea 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-logo .logo-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.header-text h1 {
+  margin: 0 0 5px 0;
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.header-text p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.content-area {
+  flex: 1;
+  padding: 20px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="1" cy="1" r="1" fill="%23ddd"/></svg>') repeat;
+}
+
+.info-box {
+  background: white;
+  border: 2px solid #999;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.box-header {
+  background: #e0e0e0;
+  border-bottom: 1px solid #999;
+  padding: 8px 12px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.box-content {
+  padding: 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.box-content h3 {
+  margin: 0 0 15px 0;
+  color: #2c5aa0;
+  font-size: 16px;
+}
+
+.box-content p {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  text-align: justify;
+}
+
+.footer {
+  background: #f0f0f0;
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+}
+
+.close-btn {
+  background: #e0e0e0;
+  border: 1px solid #999;
+  padding: 6px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.close-btn:hover {
+  background: #d0d0d0;
+}
+
+.close-btn:active {
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}

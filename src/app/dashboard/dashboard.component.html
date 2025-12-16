@@ -1,0 +1,81 @@
+<div class="dashboard">
+  <!-- Header -->
+  <div class="header">
+    <div class="user-info">
+      <div>
+        <div class="welcome-text">Welcome, {{ currentUser?.designation }}</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="action-btn" (click)="logout()">
+         Log Off
+      </button>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="section-header">Record Explorer</div>
+      <div class="menu-item" (click)="navigate('/inpatients')">
+         Manage Inpatients
+      </div>
+      <div class="menu-item" (click)="navigate('/outpatients')">
+         Manage Outpatients
+      </div>
+      <div class="menu-item" (click)="navigate('/channeling')">
+         Channelling Services
+      </div>
+      <div class="menu-item" (click)="navigate('/payments')">
+         Manage Payments
+      </div>
+      <div class="menu-item" (click)="navigate('/reports')">
+         Reports Quick Launch
+      </div>
+      <div class="menu-item">
+         Search Engine
+      </div>
+      
+      <div class="section-header">User Account Panel</div>
+      <div class="menu-item">
+         Change Password
+      </div>
+      <div class="menu-item" (click)="logout()">
+         Log Off
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+      <div class="hospital-info">
+        <div class="hospital-details">
+          <h2>Durdans Hospitals (Pvt) Ltd.</h2>
+          <div class="user-session">
+            <p>Welcome, {{ currentUser?.designation }}</p>
+            <p>Time In : {{ loginTime }}</p>
+            <p>Present Time : {{ currentTime }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <button class="about-btn" (click)="navigate('/about')">About HMS</button>
+      
+      <div class="bottom-section">
+        <div class="hospital-logo">
+          <div class="logo-circle">
+          </div>
+        </div>
+        <div class="hospital-tagline">
+          <img src="assets/logo.png" alt="Durdans Hospital Logo" class="hospital-logo-img">
+          <div class="tagline-text">
+            <h1>DURDANS HOSPITAL</h1>
+            <p>It's All About Caring...</p>
+          </div>
+        </div>
+        <div class="current-date">
+          Today is {{ getCurrentDate() }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
